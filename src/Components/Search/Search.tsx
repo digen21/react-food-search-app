@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import "./style.css";
+import ThemeButton from "../Theme-Button/Theme-Button";
+import { ThemeContext } from "../../App";
 
 //State : information which accessible to specific component
 //Props : Passing property from one component to another component
@@ -29,12 +31,14 @@ const Search = (props: any) => {
     }
   }, [ApiCalled, setApiCalled]); //Calling Only When The Api Called Property Changed
 
+  const { theme } = useContext(ThemeContext);
+
   return (
     <>
-      <nav>
+      <nav style={theme ? { backgroundColor: "#212121" } : {}}>
         <div className="--logo">
           <img
-            src="https://img.freepik.com/premium-vector/search-food-logo-template-design_20029-442.jpg?w=2000"
+            src="https://cdn.dribbble.com/users/5482538/screenshots/14141766/media/4f52f8d7436ae17658c4391b75b45951.jpg"
             alt=""
           />
         </div>
@@ -51,6 +55,7 @@ const Search = (props: any) => {
             <button type="submit">Search</button>
           </div>
         </form>
+        <ThemeButton />
       </nav>
     </>
   );
