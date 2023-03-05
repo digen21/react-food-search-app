@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useCallback } from "react";
 import Search from "../../Components/Search/Search";
 import RecipeItem from "../../Components/Recipe-Item/RecipeItem";
 import FavoriteItem from "../../Components/Favorite-Item/Favorite-Item";
@@ -58,17 +58,34 @@ function HomePage() {
     getRecipes();
   };
 
-  const addToFavorites = (currentItem: Items) => {
-    let copyFavorites = [...favorites];
-    const index = copyFavorites.findIndex((item) => item.id === currentItem.id);
-    if (index === -1) {
-      copyFavorites.push(currentItem);
-      setFavorites(copyFavorites);
-      localStorage.setItem("favorites", JSON.stringify(copyFavorites));
-    } else {
-      alert("Item already present...");
-    }
-  };
+  const addToFavorites = useCallback(
+    (currentItem: Items) => {
+      let copyFavorites = [...favorites];
+      const index = copyFavorites.findIndex(
+        (item) => item.id === currentItem.id
+      );
+      if (index === -1) {
+        copyFavorites.push(currentItem);
+        setFavorites(copyFavorites);
+        localStorage.setItem("favorites", JSON.stringify(copyFavorites));
+      } else {
+        alert("Item already present...");
+      }
+    },
+    [favorites]
+  );
+
+  // const addToFavorites = (currentItem: Items) => {
+  //   let copyFavorites = [...favorites];
+  //   const index = copyFavorites.findIndex((item) => item.id === currentItem.id);
+  //   if (index === -1) {
+  //     copyFavorites.push(currentItem);
+  //     setFavorites(copyFavorites);
+  //     localStorage.setItem("favorites", JSON.stringify(copyFavorites));
+  //   } else {
+  //     alert("Item already present...");
+  //   }
+  // };
 
   const removeFromFavorites = (currentId: number) => {
     let copyFavorites = [...favorites];
@@ -83,9 +100,22 @@ function HomePage() {
     const getItemFromStorage = JSON.parse(localStorage.getItem("favorites"));
     setFavorites(getItemFromStorage);
   }, []);
+
   const filterItems = favorites.filter((item: Items) => {
     return item.title.toLowerCase().includes(filteredState.filteredValue);
   });
+
+  const renderRecipes = useCallback(() => {
+    if (recipes && recipes.length > 0) {
+      return recipes.map((item: Items) => (
+        <RecipeItem
+          key={item.id}
+          item={item}
+          addToFavorites={() => addToFavorites(item)}
+        />
+      ));
+    }
+  }, [recipes, addToFavorites]);
 
   return (
     <div>
@@ -133,7 +163,8 @@ function HomePage() {
       )}
 
       <div className="--items">
-        {recipes && recipes.length > 0
+        {renderRecipes()}
+        {/* {recipes && recipes.length > 0
           ? recipes.map((item: Items) => (
               <RecipeItem
                 key={item.id}
@@ -141,7 +172,7 @@ function HomePage() {
                 addToFavorites={() => addToFavorites(item)}
               />
             ))
-          : null}
+          : null} */}
       </div>
     </div>
   );
