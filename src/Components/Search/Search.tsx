@@ -27,7 +27,8 @@ const Search = (props: any) => {
       setInputValue(""); //When API is called Search Input Will Be Empty
       setApiCalled(false); //When API Called Successfully  It will be come false
     }
-  }, [ApiCalled]); //Calling Only When The Api Called Property Changed
+  }, [ApiCalled, setApiCalled]); //Calling Only When The Api Called Property Changed
+
   return (
     <>
       <nav>
