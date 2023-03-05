@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useReducer, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useCallback,
+  useMemo,
+} from "react";
 import Search from "../../Components/Search/Search";
 import RecipeItem from "../../Components/Recipe-Item/RecipeItem";
 import FavoriteItem from "../../Components/Favorite-Item/Favorite-Item";
@@ -68,24 +74,13 @@ function HomePage() {
         copyFavorites.push(currentItem);
         setFavorites(copyFavorites);
         localStorage.setItem("favorites", JSON.stringify(copyFavorites));
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         alert("Item already present...");
       }
     },
     [favorites]
   );
-
-  // const addToFavorites = (currentItem: Items) => {
-  //   let copyFavorites = [...favorites];
-  //   const index = copyFavorites.findIndex((item) => item.id === currentItem.id);
-  //   if (index === -1) {
-  //     copyFavorites.push(currentItem);
-  //     setFavorites(copyFavorites);
-  //     localStorage.setItem("favorites", JSON.stringify(copyFavorites));
-  //   } else {
-  //     alert("Item already present...");
-  //   }
-  // };
 
   const removeFromFavorites = (currentId: number) => {
     let copyFavorites = [...favorites];
@@ -142,7 +137,11 @@ function HomePage() {
             placeholder="Search Favorites...."
           />
         </div>
+
         <div className="--favorites-item">
+          {!filterItems.length && (
+            <div className="--no-item">No favorite item found</div>
+          )}
           {favorites && favorites.length > 0
             ? filterItems.map((item: Items) => (
                 <FavoriteItem
@@ -163,17 +162,25 @@ function HomePage() {
       )}
 
       <div className="--items">
-        {renderRecipes()}
-        {/* {recipes && recipes.length > 0
-          ? recipes.map((item: Items) => (
-              <RecipeItem
-                key={item.id}
-                item={item}
-                addToFavorites={() => addToFavorites(item)}
-              />
-            ))
-          : null} */}
+        {useMemo(
+          () =>
+            !loadingState && recipes && recipes.length > 0
+              ? recipes.map((item: Items) => (
+                  <RecipeItem
+                    key={item.id}
+                    item={item}
+                    addToFavorites={() => addToFavorites(item)}
+                  />
+                ))
+              : null,
+          [loadingState, recipes, addToFavorites] //dependencies
+        )}
       </div>
+      {!loadingState && !recipes.length && (
+        <div style={{ color: "#fff" }} className="--not-found">
+          No Recipes Found
+        </div>
+      )}
     </div>
   );
 }
