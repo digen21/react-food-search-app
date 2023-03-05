@@ -19,8 +19,8 @@ function App() {
         setTheme,
       }}
     >
-      <div className="App" style={theme ? { backgroundColor: "#feb300" } : {}}>
-        <ThemeButton />
+      <div className="App" style={theme ? { backgroundColor: "#CAF486" } : {}}>
+        {/* <ThemeButton /> */}
         <HomePage />
       </div>
     </ThemeContext.Provider>

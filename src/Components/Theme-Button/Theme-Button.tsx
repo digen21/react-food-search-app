@@ -8,11 +8,11 @@ export default () => {
   return (
     <>
       <button
-        style={theme ? { backgroundColor: "#12343b" } : {}}
+        style={theme ? { backgroundColor: "#CAF486" } : {}}
         className="--theme-button"
         onClick={() => setTheme(!theme)}
       >
-        Change Theme
+        <i className="uil uil-moon"></i>
       </button>
     </>
   );

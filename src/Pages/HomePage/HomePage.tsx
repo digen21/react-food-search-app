@@ -125,8 +125,8 @@ function HomePage() {
       />
 
       {/* displaying favorite items  */}
-      <div className="--items">
-        <h1 className="--fav-title">Favorites</h1>
+      <div className="--favorite-items">
+        <h3 className="--favorite-title">Favorites</h3>
         <div className="--search-favorites">
           <input
             onChange={(e) =>
@@ -143,7 +143,7 @@ function HomePage() {
         </div>
 
         <div className="--favorites-item">
-          {!filterItems.length && (
+          {!filterItems && !filterItems.length && (
             <div className="--no-item">No favorite item found</div>
           )}
           {favorites && favorites.length > 0
@@ -165,7 +165,7 @@ function HomePage() {
         <div className="--loading">Recipe Is Loading... Please Wait!</div>
       )}
 
-      <div className="--items">
+      <div className="--recipe-items">
         {useMemo(
           () =>
             !loadingState && recipes && recipes.length > 0
