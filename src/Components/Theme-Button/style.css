@@ -1,0 +1,22 @@
+.--theme-button {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+    border: 0;
+    outline: none;
+    border-radius: 4px;
+    letter-spacing: 0.8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: rgba(172, 255, 47, 0.609);
+    transition: 0.3s all ease;
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+}
+
+.--theme-button:hover {
+    transform: scale(1.05);
+    background-color: greenyellow;
+}
