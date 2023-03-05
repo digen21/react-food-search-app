@@ -92,13 +92,17 @@ function HomePage() {
   };
 
   useEffect(() => {
-    const getItemFromStorage = JSON.parse(localStorage.getItem("favorites"));
+    const getItemFromStorage =
+      JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(getItemFromStorage);
   }, []);
 
-  const filterItems = favorites.filter((item: Items) => {
-    return item.title.toLowerCase().includes(filteredState.filteredValue);
-  });
+  const filterItems =
+    favorites && favorites.length > 0
+      ? favorites.filter((item: Items) => {
+          return item.title.toLowerCase().includes(filteredState.filteredValue);
+        })
+      : [];
 
   const renderRecipes = useCallback(() => {
     if (recipes && recipes.length > 0) {
