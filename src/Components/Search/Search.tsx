@@ -28,6 +28,7 @@ const Search = (props: any) => {
       setApiCalled(false); //When API Called Successfully  It will be come false
     }
   }, [ApiCalled]); //Calling Only When The Api Called Property Changed
+
   return (
     <>
       <nav>

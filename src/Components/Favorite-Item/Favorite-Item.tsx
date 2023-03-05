@@ -3,7 +3,7 @@ import React from "react";
 
 //Receiving items from homepage component
 function FavoriteItem(props: any) {
-  const { removeFromFavorite } = props;
+  const { removeFromFavorites } = props;
 
   return (
     <div className="--favorite" key={props.id}>
@@ -12,7 +12,7 @@ function FavoriteItem(props: any) {
       </div>
       <div className="--favorite-content">
         <h4>{props.item.title}</h4>
-        <button className="--btn" type="button" onClick={removeFromFavorite}>
+        <button className="--btn" type="button" onClick={removeFromFavorites}>
           Remove From Favorite
         </button>
       </div>

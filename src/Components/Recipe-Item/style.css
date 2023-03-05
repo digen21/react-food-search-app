@@ -8,7 +8,7 @@
     padding: 5px 10px;
 }
 
-.--favorite {
+.--recipes {
 
     max-width: 180px;
     height: 280px;
@@ -22,7 +22,7 @@
 }
 
 
-.--favorite img {
+.--recipes img {
     margin-top: -115px;
     width: 100%;
     height: 250px;
@@ -31,7 +31,7 @@
 }
 
 
-.--favorite-content {
+.--recipe-content {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -39,7 +39,7 @@
     width: 100%;
 }
 
-.--favorite-content>h4 {
+.--recipe-content>h4 {
     text-align: center;
     font-size: 0.7rem;
     font-weight: 300;

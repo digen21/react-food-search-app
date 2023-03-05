@@ -13,7 +13,8 @@ interface Recipe {
 
 //Receiving items from homepage component
 function RecipeItem(props: any) {
-  const { addToFavorite } = props;
+  const { addToFavorites } = props;
+
   return (
     <div className="--recipes">
       <div className="--recipe-img">
@@ -21,7 +22,7 @@ function RecipeItem(props: any) {
       </div>
       <div className="--recipe-content">
         <h4>{props.item.title}</h4>
-        <button className="--btn" type="button" onClick={addToFavorite}>
+        <button className="--btn" type="button" onClick={addToFavorites}>
           Add to Favorite
         </button>
       </div>
