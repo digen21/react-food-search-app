@@ -1,5 +1,5 @@
 import "./style.css";
-import React from "react";
+import React, { useState } from "react";
 
 interface Item {
   item: Recipe;
@@ -14,6 +14,7 @@ interface Recipe {
 //Receiving items from homepage component
 function RecipeItem(props: any) {
   const { addToFavorites } = props;
+  const [cart, setCart] = useState("");
 
   return (
     <div className="--recipes">

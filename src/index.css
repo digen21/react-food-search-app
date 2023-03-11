@@ -1,0 +1,12 @@
+  .swal2-title {
+      font-size: 1.5rem !important;
+      font-family: 'Poppins', sans-serif;
+  }
+
+  #swal2-html-container {
+      font-size: 1rem;
+  }
+
+  .swal2-styled.swal2-confirm {
+      width: 150px;
+  }

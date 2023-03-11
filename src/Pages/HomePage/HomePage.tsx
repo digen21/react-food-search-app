@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
+import Swal from "sweetalert2";
 import Search from "../../Components/Search/Search";
 import RecipeItem from "../../Components/Recipe-Item/RecipeItem";
 import FavoriteItem from "../../Components/Favorite-Item/Favorite-Item";
@@ -75,8 +76,19 @@ function HomePage() {
         setFavorites(copyFavorites);
         localStorage.setItem("favorites", JSON.stringify(copyFavorites));
         window.scrollTo({ top: 0, behavior: "smooth" });
+        Swal.fire({
+          title: "Added To Favorite",
+          text: "😍",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
       } else {
-        alert("Item already present...");
+        Swal.fire({
+          title: "Item Already Present",
+          text: "❗️",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
       }
     },
     [favorites]
@@ -89,6 +101,12 @@ function HomePage() {
     );
     setFavorites(copyFavorites);
     localStorage.setItem("favorites", JSON.stringify(copyFavorites));
+    Swal.fire({
+      title: "Item Removed From Favorite",
+      text: `🗑️`,
+      icon: "warning",
+      confirmButtonText: "OK",
+    });
   };
 
   useEffect(() => {
