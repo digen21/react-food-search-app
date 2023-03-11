@@ -20,7 +20,7 @@ nav {
 
 .--search {
     display: flex;
-    max-width: 500px;
+    max-width: 600px;
     justify-content: center;
     margin: 2rem auto;
     gap: 20px;
@@ -36,23 +36,24 @@ nav {
     width: 100%;
     color: #000;
     font-weight: 400;
-    width: 300px;
+    width: 430px;
 }
 
-.--search>button {
+.-search-btn {
     padding: 5px 10px;
     border: 0;
     outline: none;
-    border-radius: 4px;
+    border-radius: 4px !important;
     letter-spacing: 0.8px;
     font-size: 0.8rem;
     font-weight: 500;
-    width: 80px;
+    width: 100px;
+    height: auto;
     background-color: rgba(172, 255, 47, 0.609);
     transition: 0.3s all ease;
-    width: 100%;
-    max-width: 80px;
+    /* max-width: 80px; */
 }
+
 
 
 .--search>button:hover {

@@ -1,10 +1,10 @@
 .--recipe-items {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px auto;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    margin: 30px 0;
 }
 
 .--recipes {

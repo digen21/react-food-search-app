@@ -40,6 +40,7 @@ const Search = (props: any) => {
           <img
             src="https://cdn.dribbble.com/users/5482538/screenshots/14141766/media/4f52f8d7436ae17658c4391b75b45951.jpg"
             alt=""
+            className="--logo-img"
           />
         </div>
         <form action="" className="--search-form" onSubmit={handleSubmit}>
@@ -52,7 +53,10 @@ const Search = (props: any) => {
               onChange={handleInputValue}
               value={inputValue}
             />
-            <button type="submit">Search</button>
+            <button type="submit" className="-search-btn">
+              <span className="--btn-text">Search</span>
+              <i className="uil uil-search-alt --btn-ic"></i>
+            </button>
           </div>
         </form>
         <ThemeButton />
